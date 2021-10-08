@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <title>Eunu Board</title>
+</head>
+
+<body class="container-fluid">
+<h1>Main</h1>
+
+
+<p class="d-md-flex justify-content-md-end">
+  <button class="btn btn-info me-md-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
+    검색하기
+  </button>
+  <a th:href="@{/post-new}" class="btn btn-success me-md-1" type="button">새 글쓰기</a>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <div class="input-group mb-3">
+      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+        검색옵션
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">작성자 이름</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">글 번호</a></li>
+        <li><a class="dropdown-item" href="#">글 제목</a></li>
+        <li><a class="dropdown-item" href="#">글 내용</a></li>
+  <!--        <li><a class="dropdown-item" href="#">Separated link</a></li>-->
+      </ul>
+      <input type="text" class="form-control" aria-label="Text input with dropdown button">
+      <a class="btn btn-outline-secondary" type="button" id="button-addon2">검색</a>
+    </div>
+  </div>
+</div>
+
+
+
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+  <tr>
+    <td>글 번호</td>
+    <td>제목</td>
+    <td>작성자</td>
+    <td>작성일</td>
+    <td>조회수</td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="post: ${posts}" th:object="${post}">
+    <td th:text="*{postId}"></td>
+    <td  >
+      <a th:href="@{/post-describe/(postId=*{postId})}" th:text="*{title}"></a>
+    </td>
+    <td th:text="*{userId}"></td>
+    <td th:text="*{createdAt}"></td>
+    <td th:text="*{hit}"></td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="dropdown input-group mb-3">
+  <button class="btn btn-outline-secondary dropdown-toggle" id="dropdownMenu3"  type="button" data-bs-toggle="dropdown">
+    검색옵션
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
+    <li><a class="dropdown-item" href="#">작성자 이름</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="#">글 번호</a></li>
+    <li><a class="dropdown-item" href="#">글 제목</a></li>
+    <li><a class="dropdown-item" href="#">글 내용</a></li>
+    <!--        <li><a class="dropdown-item" href="#">Separated link</a></li>-->
+  </ul>
+  <input type="text" class="form-control" aria-label="Text input with dropdown button">
+  <a class="btn btn-outline-secondary" type="button" id="button-addon3">검색</a>
+</div>
+
+</body>
+</html>

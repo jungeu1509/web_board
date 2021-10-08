@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <title>Eunu Board</title>
+</head>
+
+<body class="container-fluid">
+<h1>New Post</h1>
+<h3>새 글을 작성해주세요.</h3>
+<form th:action="@{/mainboard}" method="post">
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" name="title" class="form-control" id="title">
+  </div>
+  <div class="mb-3">
+    <label for="userId" class="form-label">UserId</label>
+    <input type="number" name="userId" class="form-control" id="userId">
+  </div>
+  <div class="mb-3">
+    <label for="content" class="form-label">Content</label>
+    <textarea class="form-control" name="content" id="content" aria-label="With textarea"></textarea>
+  </div>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <a th:href="@{/mainboard}" class="btn btn-danger me-md-2" type="button">글쓰기 취소</a>
+    <button type="submit" class="btn btn-primary">작성완료</button>
+  </div>
+</form>
+
+</body>
+</html>
